@@ -77,8 +77,15 @@ void widget::on_pb_Tea_clicked()
 void widget::on_pb_Return_clicked()
 {
     QMessageBox msg;
-    // 500, 100, 50, 10 count and print
-    msg.information(nullptr,"Return Money",QString::number(money));
+    QString msgResult="";
+    money / 500 != 0 ? msgResult += "500 X " + QString::number(money/500) + "\n" : msgResult += "";
+    money %= 500;
+    money / 100 != 0 ? msgResult += "100 X " + QString::number(money/100) + "\n"  : msgResult += "";
+    money %= 100;
+    money / 50 != 0 ? msgResult += "50 X " + QString::number(money/50) + "\n"  : msgResult += "";
+    money %= 50;
+    money / 10 != 0 ? msgResult += "10 X " + QString::number(money/10) : msgResult += "";
+    msg.information(nullptr,"Return Money",msgResult);
     changeMoney(-money);
     checkState();
 }
