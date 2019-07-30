@@ -7,10 +7,7 @@ widget::widget(QWidget *parent) :
     ui(new Ui::widget)
 {
     ui->setupUi(this);
-    ui->pb_Tea->setEnabled(false);
-    ui->pb_Coke->setEnabled(false);
-    ui->pb_Coffee->setEnabled(false);
-    ui->pb_Return->setEnabled(false);
+    checkState();
 }
 
 widget::~widget()
@@ -20,10 +17,10 @@ widget::~widget()
 
 void widget::checkState()
 {
-    money<=0 ? ui->pb_Return->setEnabled(false) : ui->pb_Return->setEnabled(true);
-    money>=50 ? ui->pb_Tea->setEnabled(true) : ui->pb_Tea->setEnabled(false);
-    money>=100 ? ui->pb_Coffee->setEnabled(true) : ui->pb_Coffee->setEnabled(false);
-    money>=200 ? ui->pb_Coke->setEnabled(true) : ui->pb_Coke->setEnabled(false);
+    ui->pb_Return->setEnabled(money>0);
+    ui->pb_Tea->setEnabled(money>=50);
+    ui->pb_Coffee->setEnabled(money>=100);
+    ui->pb_Coke->setEnabled(money>=200);
 }
 
 void widget::changeMoney(int n)
