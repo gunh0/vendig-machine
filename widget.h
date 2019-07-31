@@ -4,8 +4,9 @@
 #include <QMainWindow>
 #include <QMessageBox>
 
-namespace Ui {
-class widget;
+namespace Ui
+{
+    class widget;
 }
 
 class widget : public QMainWindow
